@@ -33,8 +33,12 @@ class CombinedChartViewController: DemoBaseViewController {
                         .removeDataSet]
         
         chartView.delegate = self
-        
         chartView.chartDescription?.enabled = false
+        
+        
+        if let render = chartView.renderer as? CombinedChartRenderer{
+            render.isDrawCandleStickMaxMinValue = true
+        }
         
         chartView.drawBarShadowEnabled = false
         chartView.highlightFullBarEnabled = false

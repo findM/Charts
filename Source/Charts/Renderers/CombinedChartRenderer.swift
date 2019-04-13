@@ -21,6 +21,15 @@ open class CombinedChartRenderer: DataRenderer
     
     /// if set to true, a grey area is drawn behind each bar that indicates the maximum value
     @objc open var drawBarShadowEnabled = false
+    /// 如果设置 true 将会绘制 蜡烛图的最大最小值
+    open var isDrawCandleStickMaxMinValue = false
+    
+    /// 如果设置 true 将会绘制 蜡烛图的买卖点icon
+    open var isDrawCandleStickRTradeIconValue = false
+
+    /// 如果设置 true 将会绘制 蜡烛图的买卖点Text
+    open var isDrawCandleStickRTradeTextValue = false
+
     
     internal var _renderers = [DataRenderer]()
     
@@ -63,7 +72,10 @@ open class CombinedChartRenderer: DataRenderer
             case .candle:
                 if chart.candleData !== nil
                 {
-                    _renderers.append(CandleStickChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
+                    let candleStickChartRenderer = CandleStickChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler)
+                    candleStickChartRenderer.isDrawMaxMinValue = isDrawCandleStickMaxMinValue
+                    
+                    _renderers.append(candleStickChartRenderer)
                 }
                 break
                 

@@ -73,6 +73,7 @@ class LineChart1ViewController: DemoBaseViewController {
         leftAxis.addLimitLine(ll2)
         leftAxis.axisMaximum = 200
         leftAxis.axisMinimum = -50
+        leftAxis.forceLabelsEnabled  = true
         leftAxis.gridLineDashLengths = [5, 5]
         leftAxis.drawLimitLinesBehindDataEnabled = true
         
